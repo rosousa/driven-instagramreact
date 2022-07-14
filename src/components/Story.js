@@ -1,14 +1,14 @@
 function UserStory(props){
   return(
-    <div className="story">
-      <div className="imagem">
-        <img src={props.img} />
-      </div>
-      <div className="usuario">
-        {props.name}
-      </div>
-    </div>
-  )
+          <div className="story">
+            <div className="imagem">
+              <img src={props.img} />
+            </div>
+            <div className="usuario">
+              {props.name}
+            </div>
+          </div>
+        )
 }
 
 export default function Story(){
@@ -25,14 +25,14 @@ export default function Story(){
                 ]
 
   return(
-    <div className="stories">
+          <div className="stories">
 
-      {users.map(user => <UserStory name={user.name} img={user.image} />)}
+            {users.map(user => <UserStory name={user.name} img={user.image} />)}
 
-      <div className="setinha">
-        <ion-icon name="chevron-forward-circle"></ion-icon>
-      </div>
+            <div className="setinha">
+              <ion-icon name="chevron-forward-circle"></ion-icon>
+            </div>
 
-    </div>
-  )
+          </div>
+        )
 }
