@@ -1,4 +1,37 @@
+import React from 'react';
+
 function UserPost(props){
+  
+  const [like, setLike] = React.useState("unliked md hydrated");
+  const [heart, setHeart] = React.useState("heart-outline");
+  const [postLike, setPostLike] = React.useState("post-like md hydrated");
+
+  function handleLike(){
+    if(like === "unliked md hydrated"){
+      setLike("liked md hydrated");
+      setHeart("heart");
+    } else {
+      setLike("unliked md hydrated");
+      setHeart("heart-outline");
+    }
+  }
+
+  function likeAnimation(){
+    setPostLike("post-liked post-like md hydrated")
+      setTimeout(() => {
+        setPostLike("post-like md hydrated");
+      }, 1000);
+  }
+
+  function handlePostLike(){
+    if(like === "unliked md hydrated"){
+      likeAnimation();
+      handleLike();
+    } else {
+      likeAnimation();
+    }
+  }
+  
   return(
           <div className="post">
             <div className="topo">
@@ -10,15 +43,19 @@ function UserPost(props){
                 <ion-icon name="ellipsis-horizontal"></ion-icon>
               </div>
             </div>
-
-            <div className="conteudo">
+            <div className="conteudo" onDoubleClick={() => {
+              handlePostLike();
+            }}>
               <img src={props.content} />
+              <ion-icon class={postLike} name="heart"></ion-icon>
             </div>
 
             <div className="fundo">
               <div className="acoes">
                 <div>
-                  <ion-icon name="heart-outline"></ion-icon>
+                  <ion-icon name={heart} onClick={()=>{
+                    handleLike();
+                  }} class={like}></ion-icon>
                   <ion-icon name="chatbubble-outline"></ion-icon>
                   <ion-icon name="paper-plane-outline"></ion-icon>
                 </div>
